@@ -1,1 +1,30 @@
 
+Cálculo da AUC de um fold
+
+    result é o conjunto de percentual de amostras indicadas como novidade para cada limiar definido numa faixa de [0,100] em intervalos de 5.
+
+    PD do detector:
+    para p em de 0 até 100 em intervalos de 5:
+        PD[p]=1-result[p], (para um percentil de 5, diria algo próximo de 95% de novidade, logo 5% de classe conhecida)
+
+    Cálculo AUC detector:
+        sendo o detector de uma determinada classe1 obtenho a AUC para uma dada classe2 da seguinte forma:
+            AUC individual=auc(PD, result[classe2] onde classe2 pertence ao conjunto {ABCDEFGH} - {classe1}, sendo classe1 a classe do detector de novidade
+            a função auc utilizada pertence a biblioteca sklearn.metrics
+        AUC usada para comparação é a média das aucs individuais
+
+    PD do Não especializado, hierárquico e competitivo:
+        sendo o sistema composto por 2 à 7 classes, obtenho o PD da seguinte forma
+        para p em de 0 até 100 em intervalos de 5:
+            para cada classe1 no conjunto de classes do sistema:
+                pdIndividual = 1-result[classe1] para ada elemento de results
+        PD usado é a média dos PD's de cada classe conhecida no sistema
+        
+    Cálculo AUC Não especializado, hierárquico e competitivo:
+        exatamento igual ao procedimento feito no detector
+
+
+Comparação do classificador
+    sendo o sistema composto por 2 à 7 classes
+    para cada classe conhecida do sistema obtenho o percentual de acertos do classificador para esta classe em um determinado fold
+    utilizo a média destes resultados
