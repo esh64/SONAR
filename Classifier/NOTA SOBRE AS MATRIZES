@@ -1,3 +1,4 @@
 Cada coluna representa uma das classes conhecidas em ordem alfabética
 
 Por exemplo, o arquivo ClassifierACGResults.mat contém 8 matrizes, uma para cada classe, em cada uma dessas matrizes, teremos 100 linhas representando os folds e cada uma das três colunas representando uma classe conhecidas em ordem alfabética. A primeira coluna é o percentual do fold que foi classificado como A, a segunda é o percentual do fold classificado como C e a terceira é o percentual do fold classificado como G
+
